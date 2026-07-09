@@ -1,7 +1,7 @@
 module multiplier #(parameter N = 16)(
     input  wire         clk, rst, start,
     input  wire [N-1:0] X_in, Y_in,
-    output wire [N-1:0] P_out,
+    output wire [2*N-1:0] P_out,
     output wire         done
 );
     wire LD, SHIFT, ADD;

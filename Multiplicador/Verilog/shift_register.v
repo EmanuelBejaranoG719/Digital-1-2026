@@ -1,9 +1,5 @@
-// =============================================================
+
 // Module: shift_register
-// Description: N-bit register with parallel load and shift.
-//   DIR=1 → left  shift (X REG: X << 1)
-//   DIR=0 → right shift (Y REG: Y >> 1, LSB disponible)
-// =============================================================
 module shift_register #(
     parameter N   = 16,
     parameter DIR = 0

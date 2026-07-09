@@ -15,11 +15,11 @@ module tb_multiplier;
     reg  [N-1:0] X_in;
     reg  [N-1:0] Y_in;
 
-    wire [N-1:0] P_out;
+    wire [2*N-1:0] P_out;
     wire done;
 
 
-    multiplier #(N) UUT (
+    multiplier #(N) DUT (
         .clk(clk),
         .rst(rst),
         .start(start),
@@ -29,24 +29,25 @@ module tb_multiplier;
         .done(done)
     );
 
-    
     always #5 clk = ~clk;
 
-   
     initial begin
 
+        // Archivo para GTKWave
         $dumpfile("multiplier.vcd");
         $dumpvars(0, tb_multiplier);
 
+        // Inicialización
         clk   = 0;
         rst   = 1;
         start = 0;
+
         X_in  = 0;
         Y_in  = 0;
 
- 
         #20;
         rst = 0;
+
         #10;
         X_in = 16'd15;
         Y_in = 16'd7;
@@ -55,9 +56,14 @@ module tb_multiplier;
         #10;
         start = 0;
 
+        // Esperar a DONE
         wait(done);
 
         #20;
+
+        
+// PRUEBA 2
+
         rst = 1;
         #10;
         rst = 0;

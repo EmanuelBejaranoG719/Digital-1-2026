@@ -18,7 +18,7 @@ module control_unit(
         S_SHIFT = 3'd3,
         S_END   = 3'd4;
 
-    localparam [4:0] HOLD_CYCLES = 5'd20;
+    localparam [4:0] HOLD_CYCLES = 5'd28;
 
     reg [2:0] state;
     reg [4:0] count;
