@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 `include "top_sqrt.v"
-`include "cont_sqrt.v"
+`include "fsm_sqrt.v"
 `include "cont.v"
 `include "reg_n.v"
 `include "reg_rem.v"
@@ -46,28 +46,27 @@ initial begin
     #20;
     rst = 0;
 
-// ── Caso 1
+//--- Caso 1
     #10;
     N_in  = 16'd79;
     start = 1;
     #10;
     start = 0;
 
-    // ready=1 significa que raiz ya está estable en reg_out
+// ready=1 la raiz ya está estable en reg_out
     wait(ready);
-    #1; // margen post-flanco
+    #1;
 
     $display("------------------------");
     $display("sqrt(%0d)", N_in);
     $display("Raiz: %0d" , raiz);
 
-    // reset entre casos
     #10; rst = 1;
     #10; rst = 0;
 
-// ── Caso 2 : sqrt(100^2 = 10000) ──────────────────────────────
+// --- Caso 2 
     #10;
-    N_in  = 16'd100;
+    N_in  = 16'd124;
     start = 1;
     #10;
     start = 0;
@@ -79,13 +78,13 @@ initial begin
     $display("sqrt(%0d)", N_in);
     $display("Raiz: %0d" , raiz);
 
-    // reset entre casos
+
     #10; rst = 1;
     #10; rst = 0;
 
-// ── Caso 3 : sqrt(255^2 = 65025) ──────────────────────────────
+// --- Caso 3 
     #10;
-    N_in  = 16'd625;
+    N_in  = 16'd615;
     start = 1;
     #10;
     start = 0;

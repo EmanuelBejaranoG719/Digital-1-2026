@@ -1,28 +1,14 @@
-// =============================================================
 // Module: div_fsm
-// FSM de restoring division
-//
-//   S_IDLE  -> espera start
-//   S_LOAD  -> emite LD=1 un ciclo para cargar/limpiar registros
-//   S_WAIT  -> un ciclo para que los registros tomen sus valores
-//   S_SHIFT -> desplaza Dvd a la izq y Acm a la izq (Dvd_MSB -> LSB de Acm)
-//   S_CHECK -> si Acm >= Dvs: SUB=1,Q1=1 (resta y mete 1 al cociente)
-//              si no:         Q0=1       (NO resta, Acm conserva el valor
-//                                          del shift; mete 0 al cociente)
-//              incrementa contador; si contador==N-1 -> S_DONE
-//   S_DONE  -> DONE=1 durante 1 ciclo, luego regresa a S_IDLE
-//              (listo de inmediato para un nuevo 'start')
-// =============================================================
 module Control_div #(parameter N = 16)(
     input  wire clk,
     input  wire rst,
     input  wire start,
-    input  wire N_in,      // Acm >= Dvs
-    output reg  LD,        // cargar/limpiar registros
-    output reg  SHFT,      // shift Dvd + Acm
-    output reg  SUB,       // Acm = Acm - Dvs
-    output reg  Q0,        // cociente shift, entra 0
-    output reg  Q1,        // cociente shift, entra 1
+    input  wire N_in,      
+    output reg  LD,       
+    output reg  SHFT,      
+    output reg  SUB,       
+    output reg  Q0,       
+    output reg  Q1,       
     output reg  DONE
 );
 
@@ -39,7 +25,7 @@ module Control_div #(parameter N = 16)(
     reg [2:0]      state;
     reg [CNT_W-1:0] cnt;
 
-//  Valores iniciales 
+// Valores iniciales
 
     initial begin
         LD    = 0;

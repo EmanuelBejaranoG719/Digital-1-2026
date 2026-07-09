@@ -1,4 +1,4 @@
-module cont_sqrt (
+module fsm_sqrt (
     input  wire clk,
     input  wire rst,
     input  wire start,
@@ -81,11 +81,6 @@ module cont_sqrt (
                 S_CALC: begin
                     load_n   <= 0;
                     init     <= 0;
-                    // Cuando done=1 este es el último par: el en_calc=1
-                    // que SALE este ciclo (asignado en el ciclo anterior)
-                    // ya procesa C=0 correctamente en reg_rad.
-                    // Asignamos en_calc<=0 para que en S_WAIT2 salga 0
-                    // y reg_rad no haga un shift extra.
                     en_calc  <= done ? 1'b0 : 1'b1;
                     decr     <= done ? 1'b0 : 1'b1;
                     load_out <= 0;
@@ -97,7 +92,7 @@ module cont_sqrt (
                 end
 
                 S_WAIT2: begin
-                    // en_calc sale 0 (asignado en último S_CALC) → sin shift extra
+                    // en_calc sale 0
                     // Rad tiene el valor final correcto
                     load_n   <= 0;
                     init     <= 0;

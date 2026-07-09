@@ -12,30 +12,28 @@ module top_sqrt #(
     output wire                 ready
 );
 
-    // ---- señales de control (FSM -> datapath) ----
+// señales de control
     wire load_n, init, en_calc, decr, load_out;
 
-    // ---- señales de datapath ----
     wire [WIDTH_N-1:0]          N;
     wire [WIDTH_REM-1:0]        Rem;
     wire [WIDTH_RAD-1:0]        Rad;
     wire [$clog2(N_PAIRS)-1:0]  C;
     wire                        done_cnt;
 
-    // ---- par de bits actual: N[2C+1 : 2C] ----
     wire [1:0] pair = N >> (C * 2);
 
-    // ---- residuo desplazado con el par entrante ----
+
     wire [WIDTH_REM-1:0] Rem_sh = (Rem << 2) | {{(WIDTH_REM-2){1'b0}}, pair};
 
-    // ---- candidato Trial = {Rad, 2'b01} ----
+
     wire [WIDTH_RAD+1:0] Trial_w;
     trial #(.WIDTH_RAD(WIDTH_RAD)) u_trial (
         .Rad   (Rad),
         .Trial (Trial_w)
     );
 
-    // ---- resta: Rem_sh - Trial ----
+    //Rem_sh - Trial
     wire [WIDTH_REM-1:0] Rem_next;
     wire                 borrow;
     wire                 update;   // 1 si Rem_sh >= Trial (bit de raiz = 1)
@@ -47,14 +45,10 @@ module top_sqrt #(
         .update   (update)
     );
 
-    // ---- mux restaurador ----
     wire [WIDTH_REM-1:0] D_rem = update ? Rem_next : Rem_sh;
 
-    // ---- FSM de control ----
-    // NOTA: sel_rad ya NO es output de la FSM. 'update' llega
-    // directamente a reg_rad como sel_rad (wire combinacional),
-    // eliminando el desfase de 1 ciclo que causaba raiz=0.
-    cont_sqrt u_fsm (
+//FSM de control
+    fsm_sqrt u_fsm (
         .clk      (clk),
         .rst      (rst),
         .start    (start),
@@ -67,7 +61,7 @@ module top_sqrt #(
         .ready    (ready)
     );
 
-    // ---- contador de iteraciones ----
+// contador de iteraciones 
     cont #(.N_PAIRS(N_PAIRS)) u_cont (
         .clk  (clk),
         .rst  (rst),
@@ -77,7 +71,7 @@ module top_sqrt #(
         .done (done_cnt)
     );
 
-    // ---- registro del radicando N ----
+//registro del radicando N
     reg_n #(.WIDTH_N(WIDTH_N)) u_reg_n (
         .clk    (clk),
         .rst    (rst),
@@ -86,7 +80,7 @@ module top_sqrt #(
         .N      (N)
     );
 
-    // ---- registro del residuo parcial Rem ----
+// registro del residuo parcial Rem 
     reg_rem #(.WIDTH_REM(WIDTH_REM)) u_reg_rem (
         .clk     (clk),
         .rst     (rst),
@@ -96,18 +90,17 @@ module top_sqrt #(
         .Rem     (Rem)
     );
 
-    // ---- registro de la raiz parcial Rad ----
-    // sel_rad = update (wire combinacional directo, sin pasar por FSM)
+// registro de la raiz parcial Rad
     reg_rad #(.WIDTH_RAD(WIDTH_RAD)) u_reg_rad (
         .clk     (clk),
         .rst     (rst),
         .init    (init),
         .en_calc (en_calc),
-        .sel_rad (update),   // <-- directo desde sub, no desde FSM
+        .sel_rad (update),
         .Rad     (Rad)
     );
 
-    // ---- registro de salida ----
+ // registro de salida ----
     reg_out #(.WIDTH_RAD(WIDTH_RAD)) u_reg_out (
         .clk      (clk),
         .rst      (rst),
