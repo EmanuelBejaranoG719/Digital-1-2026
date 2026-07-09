@@ -10,28 +10,28 @@ module peripheral_test(clk , reset , d_in , cs , addr , rd , wr, d_out );
   output reg [31:0]d_out;
 
 //------------------------------------ regs and wires-------------------------------
-reg [5:0] s; 	//selector mux_4  and write registers
+reg [4:0] s; 	//selector mux_4  and write registers
 reg [15:0] Dvd; //Dividendo
 reg [15:0] Dvs; //Divisor
 reg init;
 wire [15:0] Q;	//Cociente
-wire [15:0] R; // Restos
+//wire [15:0] R; // Restos
 wire done;
 //------------------------------------ regs and wires-------------------------------
 always @(*) begin//------address_decoder------------------------------
 if (cs) begin
   case (addr)
-    5'h04: s =  6'b100000; // Dvd
-    5'h08: s =  6'b100000; // Dvs
-    5'h0C: s =  6'b100000; // init
-    5'h10: s =  6'b100000; // Q : Cociente
-    5'h14: s =  6'b100000; // R : Restos
-    5'h18: s =  6'b100000; // Done
-    default: s = 6'b000000;
+    5'h04: s =  5'b00001; // Dvd
+    5'h08: s =  5'b00010; // Dvs
+    5'h0C: s =  5'b00100; // init
+//5'h10: s =  6'b001000; // R: restos
+    5'h10: s =  5'b01000; // Q : Cociente
+    5'h14: s =  5'b10000; // Done
+    default: s = 5'b00000;
   endcase
 end
 else
-  s = 6'b000000;
+  s = 5'b00000;
 end//------------------address_decoder--------------------------------
 
 always @(posedge clk) begin//-------------------- escritura de registros 
@@ -56,10 +56,10 @@ always @(posedge clk) begin//-----------------------mux_4 :  multiplexa salidas 
     d_out = 0;
   else 
   if (cs) begin
-    case (s[5:0])
-      6'b001000: d_out    =  {16'b0, Q};
-      6'b010000: d_out    =  {16'b0, R};
-      6'b100000: d_out    = {31'b0, done};
+    case (s[4:0])
+      5'b01000: d_out    =  {16'b0, Q};
+//5'b01000: d_out    =  {16'b0, R};
+      5'b10000: d_out    = {31'b0, done};
     endcase
   end
 end//-----------------------------------------------mux_4
@@ -70,7 +70,7 @@ end//-----------------------------------------------mux_4
 //# ---------------------------------------#
 //# ---------------------------------------#
 
-top_div mult1 (
+top_div div1 (
   .rst(reset),
   .clk(clk),
   .start(init),

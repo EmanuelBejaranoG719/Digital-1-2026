@@ -95,13 +95,13 @@ module Control_div #(parameter N = 16)(
                     SHFT <= 0;
                     DONE <= 0;
                     if (N_in) begin
-                        // Acm >= Dvs: restar y meter 1 al cociente
+                        // Acm >= Dvs: resta y mete 1 al cociente
                         SUB <= 1;
                         Q1  <= 1;
                         Q0  <= 0;
                     end
                     else begin
-                        // Acm < Dvs: NO restar y meter 0 al cociente
+                        // Acm < Dvs: No resta y mete 0 al cociente
                         SUB <= 0;
                         Q1  <= 0;
                         Q0  <= 1;
@@ -123,7 +123,7 @@ module Control_div #(parameter N = 16)(
                     Q0    <= 0;
                     Q1    <= 0;
                     DONE  <= 1;
-                    state <= S_IDLE;   // un solo ciclo de DONE
+                    state <= S_IDLE;
                 end
 
                 default: state <= S_IDLE;
