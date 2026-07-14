@@ -76,7 +76,6 @@ top_div div1 (
   .start(init),
   .done(done),
   .Q_out(Q),
-  .R_out(R),
   .Dvd_in(Dvd),
   .Dvs_in(Dvs)
  );

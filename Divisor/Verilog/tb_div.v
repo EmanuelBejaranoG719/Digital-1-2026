@@ -36,7 +36,7 @@ always #5 clk = ~clk;
 
 initial begin
 
-    $dumpfile("tb_div.vcd");
+    $dumpfile("div.vcd");
     $dumpvars(0, tb_div);
 
     clk    = 0;
