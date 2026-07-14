@@ -9,11 +9,7 @@ module top_bin2bcd #(
     input  wire                   rst,
     input  wire                   start,
     input  wire [WIDTH_BIN-1:0]   Bin_in,
-    output wire [3:0]             dec_mil,
-    output wire [3:0]             mil,
-    output wire [3:0]             cent,
-    output wire [3:0]             decs,
-    output wire [3:0]             unit,
+    output wire [WIDTH_BCD-1:0]   BCD_out,
     output wire                   ready
 );
 
@@ -89,10 +85,7 @@ module top_bin2bcd #(
     );
 
 
-    assign dec_mil = Result[19:16];
-    assign mil     = Result[15:12];
-    assign cent    = Result[11:8];
-    assign decs    = Result[7:4];
-    assign unit    = Result[3:0];
+    // Salida única: BCD_out[19:16]=dec_mil  [15:12]=mil  [11:8]=cent  [7:4]=decs  [3:0]=unit
+    assign BCD_out = Result;
 
 endmodule
