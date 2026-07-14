@@ -33,7 +33,6 @@ module tb_multiplier;
 
     initial begin
 
-        // Archivo para GTKWave
         $dumpfile("multiplier.vcd");
         $dumpvars(0, tb_multiplier);
 
