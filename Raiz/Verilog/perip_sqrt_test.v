@@ -10,24 +10,24 @@ module peripheral_test(clk , reset , d_in , cs , addr , rd , wr, d_out );
   output reg [31:0]d_out;
 
 //------------------------------------ regs and wires-------------------------------
-reg [3:0] s; 	//selector mux_4  and write registers
+reg [4:0] s; 	//selector mux_4  and write registers
 reg [15:0] N; // Entrada
 reg init;	
-wire [7:0] sqrt; // Raiz
+wire [15:0] sqrt; // Raiz
 wire done;
 //------------------------------------ regs and wires-------------------------------
 always @(*) begin//------address_decoder------------------------------
 if (cs) begin
   case (addr)
-    5'h04: s =  4'b0001; // N
-    5'h08: s =  4'b0010; // init
-    5'h0C: s =  4'b0100; // sqrt
-    5'h10: s =  4'b1000; // done
-    default: s = 4'b0000;
+    5'h04: s =  5'b00001; // numero de entrada N
+    5'h0C: s =  5'b00010; // init
+    5'h10: s =  5'b00100; // sqrt resultado
+    5'h14: s =  5'b10000; // done
+    default: s = 5'b00000;
   endcase
 end
 else
-  s = 4'b0000;
+  s = 5'b00000;
 end//------------------address_decoder--------------------------------
 
 always @(posedge clk) begin//-------------------- escritura de registros 
@@ -39,7 +39,7 @@ always @(posedge clk) begin//-------------------- escritura de registros
   else begin
     if (cs && wr) begin
       N    = s[0] ? d_in    : N;	//Write Registers
-      init = s[1] ? d_in[0] : init;
+      init = s[2] ? d_in[0] : init;
     end
   end
 
@@ -51,8 +51,8 @@ always @(posedge clk) begin//-----------------------mux_4 :  multiplexa salidas 
   else 
   if (cs) begin
     case (s[3:0])
-      4'b0100: d_out    =  {24'b0, sqrt};
-      4'b1000: d_out    =  {31'b0, done};
+      5'b01000: d_out    =  {16'b0, sqrt};
+      5'b10000: d_out    =  {31'b0, done};
     endcase
   end
 end//-----------------------------------------------mux_4
