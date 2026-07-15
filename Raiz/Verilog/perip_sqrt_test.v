@@ -20,8 +20,8 @@ always @(*) begin//------address_decoder------------------------------
 if (cs) begin
   case (addr)
     5'h04: s =  5'b00001; // numero de entrada N
-    5'h0C: s =  5'b00010; // init
-    5'h10: s =  5'b00100; // sqrt resultado
+    5'h0C: s =  5'b00100; // init
+    5'h10: s =  5'b01000; // sqrt resultado
     5'h14: s =  5'b10000; // done
     default: s = 5'b00000;
   endcase
@@ -50,7 +50,7 @@ always @(posedge clk) begin//-----------------------mux_4 :  multiplexa salidas 
     d_out = 0;
   else 
   if (cs) begin
-    case (s[3:0])
+    case (s[4:0])
       5'b01000: d_out    =  {16'b0, sqrt};
       5'b10000: d_out    =  {31'b0, done};
     endcase

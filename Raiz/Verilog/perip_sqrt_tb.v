@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-module perip_mult_TB;
+module perip_sqrt_TB;
 
 reg clk;
 reg reset;
@@ -12,7 +12,6 @@ reg wr;
 
 wire [31:0] d_out;
 
-// Instancia del periférico
 peripheral_test uut(
     .clk(clk),
     .reset(reset),
@@ -27,43 +26,31 @@ peripheral_test uut(
 always #10 clk = ~clk;
 
 initial begin
+
     clk   = 0;
     reset = 1;
-    cs  = 0;
-    rd  = 0;
-    wr  = 0;
-    addr = 0;
-    d_in = 0;
+    cs    = 0;
+    rd    = 0;
+    wr    = 0;
+    addr  = 0;
+    d_in  = 0;
 
-    $dumpfile("perip_mult.vcd");
-    $dumpvars(0,perip_mult_TB);
-
+    $dumpfile("perip_sqrt.vcd");
+    $dumpvars(0, perip_sqrt_TB);
 
     #40;
     reset = 0;
 
- // Escritura del operando X
+// Escribir entrada N
     @(posedge clk);
     cs   = 1;
     wr   = 1;
     addr = 5'h04;
-    d_in = 16'd67;
+    d_in = 16'd81;
 
     @(posedge clk);
     wr = 0;
     cs = 0;
-
-// Escritura del operando Y
-    @(posedge clk);
-    cs   = 1;
-    wr   = 1;
-    addr = 5'h08;
-    d_in = 16'd9;
-
-    @(posedge clk);
-    wr = 0;
-    cs = 0;
-
 
     @(posedge clk);
     cs   = 1;
@@ -77,14 +64,15 @@ initial begin
     @(posedge clk);
     wr = 0;
     cs = 0;
+
 // Esperar a done
     wait(uut.done);
 
-
+    $display("--------------------------------");
     $display("Operacion terminada");
-    $display("Resultado = %d", uut.result);
+    $display("Raiz interna = %d", uut.sqrt);
 
-
+// Leer el resultado
     @(posedge clk);
     cs   = 1;
     rd   = 1;
@@ -95,7 +83,6 @@ initial begin
 
     rd = 0;
     cs = 0;
-
 
     @(posedge clk);
     cs   = 1;

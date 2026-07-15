@@ -79,7 +79,6 @@ initial begin
 
     wait(DUT.done);
 
-    $display("--------------------------------");
     $display("Division terminada");
     $display("Q = %d", DUT.Q);
 
