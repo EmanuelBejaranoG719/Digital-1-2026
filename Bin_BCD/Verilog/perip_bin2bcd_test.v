@@ -9,30 +9,26 @@ module peripheral_test(
     output reg [31:0] d_out
 );
 
-//------------------------------------------------
+
 // Registros
-//------------------------------------------------
 
-reg [4:0] s;
-
-reg [15:0] Bin;
+reg [4:0] s; //selector mux_4  and write registers
+reg [15:0] Bin; //Numero binario
 reg init;
+wire [19:0] Bcd; //Numero decimal resultado
+wire done;
 
-wire [19:0] BCD;
-wire ready;
 
-//------------------------------------------------
 // Address decoder
-//------------------------------------------------
 
 always @(*) begin
-    if(cs) begin
+if(cs) begin
         case(addr)
             5'h04: s = 5'b00001;   // Bin
-            5'h08: s = 5'b00010;   // start
-            5'h0C: s = 5'b00100;   // BCD_out
-            5'h10: s = 5'b01000;   // ready
-            default: s = 5'b00000;
+            5'h0C: s = 5'b00100;   // init
+            5'h10: s = 5'b01000;   // Bcd
+            5'h14: s = 5'b10000;   // done
+           default: s = 5'b00000;
         endcase
     end
     else
@@ -46,62 +42,42 @@ end
 always @(posedge clk) begin
 
     if(reset) begin
-        Bin  <= 16'd0;
-        init <= 1'b0;
+        Bin  = 0;
+        init = 0;
     end
-    else if(cs && wr) begin
-
-        if(s[0])
-            Bin <= d_in;
-
-        if(s[1])
-            init <= d_in[0];
-
+    else begin 
+      if (cs && wr) begin
+        Bin  =s[0] ? d_in   : Bin;
+        init =s[2] ? d_in[0]   :init; 
     end
+  end
+end
 
+
+always @(posedge clk) begin//-----------------------mux_4 :  multiplexa salidas del periferico
+  if(reset)
+    d_out = 0;
+  else 
+  if (cs) begin
+    case (s[4:0])
+      5'b01000: d_out    =  {12'b0, Bcd};
+//5'b01000: d_out    =  {16'b0, R};
+      5'b10000: d_out    = {31'b0, done};
+    endcase
+  end
 end
 
 //------------------------------------------------
-// Lectura
+// Instancia del conversor bin2bcd
 //------------------------------------------------
 
-always @(posedge clk) begin
-
-    if(reset)
-        d_out <= 32'd0;
-
-    else if(cs && rd) begin
-
-        case(s)
-
-            5'b00100:
-                d_out <= {12'd0,BCD};
-
-            5'b01000:
-                d_out <= {31'd0,ready};
-
-            default:
-                d_out <= 32'd0;
-
-        endcase
-
-    end
-
-end
-
-//------------------------------------------------
-// Instancia del algoritmo
-//------------------------------------------------
-
-top_bin2bcd uut(
-
-    .clk(clk),
+top_bin2bcd bin2bcd1(
     .rst(reset),
+    .clk(clk),
     .start(init),
     .Bin_in(Bin),
-    .BCD_out(BCD),
-    .ready(ready)
-
-);
+    .BCD_out(Bcd),
+    .ready(done)
+ );
 
 endmodule
