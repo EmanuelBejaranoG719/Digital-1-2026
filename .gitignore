@@ -1,5 +1,5 @@
-*.vcd
-sim
+# *.vcd
+#sim
 *.log
 *.tmp
-*.out
+#*.out
