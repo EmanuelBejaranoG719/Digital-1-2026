@@ -13,7 +13,7 @@ module Control_div #(parameter N = 16)(
 );
 
     localparam [2:0]
-        S_IDLE  = 3'd0,
+        S_START  = 3'd0,
         S_LOAD  = 3'd1,
         S_WAIT  = 3'd2,
         S_SHIFT = 3'd3,
@@ -34,19 +34,19 @@ module Control_div #(parameter N = 16)(
         Q0    = 0;
         Q1    = 0;
         DONE  = 0;
-        state = S_IDLE;
+        state = S_START;
         cnt   = 0;
     end
 
 
     always @(posedge clk) begin
         if (rst) begin
-            state <= S_IDLE;
+            state <= S_START;
         end
         else begin
             case (state)
 
-                S_IDLE: begin
+                S_START: begin
                     LD   <= 0;
                     SHFT <= 0;
                     SUB  <= 0;
@@ -57,7 +57,7 @@ module Control_div #(parameter N = 16)(
                     if (start)
                         state <= S_LOAD;
                     else
-                        state <= S_IDLE;
+                        state <= S_START;
                 end
 
                 S_LOAD: begin
@@ -123,10 +123,10 @@ module Control_div #(parameter N = 16)(
                     Q0    <= 0;
                     Q1    <= 0;
                     DONE  <= 1;
-                    state <= S_IDLE;
+                    state <= S_START;
                 end
 
-                default: state <= S_IDLE;
+                default: state <= S_START;
 
             endcase
         end
@@ -136,7 +136,7 @@ module Control_div #(parameter N = 16)(
     reg [8*40:1] state_name;
     always @(*) begin
         case (state)
-            S_IDLE  : state_name = "IDLE";
+            S_START  : state_name = "START";
             S_LOAD  : state_name = "LOAD";
             S_WAIT  : state_name = "WAIT";
             S_SHIFT : state_name = "SHIFT";

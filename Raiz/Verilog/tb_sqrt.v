@@ -53,12 +53,10 @@ initial begin
     #10;
     start = 0;
 
-// ready=1 la raiz ya está estable en reg_out
     wait(ready);
     #1;
 
-    $display("------------------------");
-    $display("sqrt(%0d)", N_in);
+    $display("ENtrada(%0d)", N_in);
     $display("Raiz: %0d" , raiz);
 
     #10; rst = 1;
@@ -74,8 +72,8 @@ initial begin
     wait(ready);
     #1;
 
-    $display("------------------------");
-    $display("sqrt(%0d)", N_in);
+
+    $display("Entrada(%0d)", N_in);
     $display("Raiz: %0d" , raiz);
 
 
@@ -93,7 +91,7 @@ initial begin
     #1;
 
     $display("------------------------");
-    $display("sqrt(%0d)", N_in);
+    $display("Entrada(%0d)", N_in);
     $display("Raiz: %0d" , raiz);
 
     #30;

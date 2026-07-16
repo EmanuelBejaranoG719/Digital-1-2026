@@ -14,11 +14,10 @@ module fsm_sqrt (
     localparam [2:0]
         S_IDLE  = 3'd0,
         S_INIT  = 3'd1,
-        S_WAIT1 = 3'd2,
+        S_WAIT  = 3'd2,
         S_CALC  = 3'd3,
-        S_WAIT2 = 3'd4,
-        S_DONE  = 3'd5,
-        S_OUT   = 3'd6;
+        S_DONE  = 3'd4,
+        S_OUT   = 3'd5;
 
     reg [2:0] state;
 
@@ -65,10 +64,10 @@ module fsm_sqrt (
                     decr     <= 0;
                     load_out <= 0;
                     ready    <= 0;
-                    state    <= S_WAIT1;
+                    state    <= S_WAIT;
                 end
 
-                S_WAIT1: begin
+                S_WAIT: begin
                     load_n   <= 0;
                     init     <= 0;
                     en_calc  <= 0;
@@ -81,30 +80,19 @@ module fsm_sqrt (
                 S_CALC: begin
                     load_n   <= 0;
                     init     <= 0;
-                    en_calc  <= done ? 1'b0 : 1'b1;
-                    decr     <= done ? 1'b0 : 1'b1;
+                    en_calc  <= 1;
+                    decr     <= 1;
                     load_out <= 0;
                     ready    <= 0;
                     if (done)
-                        state <= S_WAIT2;
+                        state <= S_DONE;
                     else
                         state <= S_CALC;
                 end
 
-                S_WAIT2: begin
-                    // en_calc sale 0
-                    // Rad tiene el valor final correcto
-                    load_n   <= 0;
-                    init     <= 0;
-                    en_calc  <= 0;
-                    decr     <= 0;
-                    load_out <= 0;
-                    ready    <= 0;
-                    state    <= S_DONE;
-                end
-
                 S_DONE: begin
-                    // load_out sale 1 → reg_out captura Rad este flanco ✓
+                    // en_calc=0 este ciclo 
+                    // load_out=1
                     load_n   <= 0;
                     init     <= 0;
                     en_calc  <= 0;
@@ -115,7 +103,7 @@ module fsm_sqrt (
                 end
 
                 S_OUT: begin
-                    // raiz estable → ready sale 1, TB puede leer
+                    // raiz estable 
                     load_n   <= 0;
                     init     <= 0;
                     en_calc  <= 0;
@@ -137,9 +125,8 @@ module fsm_sqrt (
         case (state)
             S_IDLE  : state_name = "IDLE  ";
             S_INIT  : state_name = "INIT  ";
-            S_WAIT1 : state_name = "WAIT1 ";
+            S_WAIT  : state_name = "WAIT  ";
             S_CALC  : state_name = "CALC  ";
-            S_WAIT2 : state_name = "WAIT2 ";
             S_DONE  : state_name = "DONE  ";
             S_OUT   : state_name = "OUT   ";
             default : state_name = "???   ";
