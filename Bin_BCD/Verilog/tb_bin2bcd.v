@@ -1,11 +1,11 @@
 `timescale 1ns/1ps
-`include "top_bin2bcd.v"
-`include "bin2bcd_fsm.v"
-`include "cont_shift.v"
-`include "reg_bin.v"
-`include "reg_bcd.v"
-`include "reg_bcd_out.v"
-`include "add_fix.v"
+// `include "top_bin2bcd.v"
+// `include "bin2bcd_fsm.v"
+// `include "cont_shift.v"
+// `include "reg_bin.v"
+// `include "reg_bcd.v"
+// `include "reg_bcd_out.v"
+// `include "add_fix.v"
 
 module tb_bin2bcd;
 

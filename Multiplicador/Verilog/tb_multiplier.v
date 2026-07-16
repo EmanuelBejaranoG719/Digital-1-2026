@@ -1,8 +1,8 @@
 `timescale 1ns/1ps
-`include "multiplier.v"
-`include "accumulator.v"
-`include "shift_register.v"
-`include "control_unit.v"
+// `include "multiplier.v"
+// `include "accumulator.v"
+// `include "shift_register.v"
+// `include "control_unit.v"
 
 module tb_multiplier;
 

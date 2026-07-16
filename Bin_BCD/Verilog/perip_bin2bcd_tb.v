@@ -145,7 +145,7 @@ initial begin
     cs   = 0;
     wr   = 0;
 
-    wait(DUT.done);
+    wait(uut.done);
 
     @(posedge clk);
     cs   = 1;
@@ -195,7 +195,7 @@ initial begin
     cs   = 0;
     wr   = 0;
 
-    wait(DUT.done);
+    wait(uut.done);
 
     @(posedge clk);
     cs   = 1;
@@ -206,7 +206,7 @@ initial begin
 
 
     $display("operación terminada");
-    $display("Bin = %0d", DUT.Bin);
+    $display("Bin = %0d", uut.Bin);
     $display("BCD = %05h", d_out[19:0]);
 
     cs = 0;

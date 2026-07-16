@@ -5,8 +5,8 @@ module fsm_sqrt (
     input  wire done,
     output reg  load_n,
     output reg  init,
-    output reg  en_calc,
-    output reg  decr,
+    output wire en_calc, 
+    output wire decr,     
     output reg  load_out,
     output reg  ready
 );
@@ -21,11 +21,12 @@ module fsm_sqrt (
 
     reg [2:0] state;
 
+    assign en_calc = (state == S_CALC);
+    assign decr    = (state == S_CALC);
+
     initial begin
         load_n   = 0;
         init     = 0;
-        en_calc  = 0;
-        decr     = 0;
         load_out = 0;
         ready    = 0;
         state    = S_IDLE;
@@ -36,8 +37,6 @@ module fsm_sqrt (
             state    <= S_IDLE;
             load_n   <= 0;
             init     <= 0;
-            en_calc  <= 0;
-            decr     <= 0;
             load_out <= 0;
             ready    <= 0;
         end
@@ -47,8 +46,6 @@ module fsm_sqrt (
                 S_IDLE: begin
                     load_n   <= 0;
                     init     <= 0;
-                    en_calc  <= 0;
-                    decr     <= 0;
                     load_out <= 0;
                     ready    <= 0;
                     if (start)
@@ -58,20 +55,17 @@ module fsm_sqrt (
                 end
 
                 S_INIT: begin
-                    load_n   <= 1;
-                    init     <= 1;
-                    en_calc  <= 0;
-                    decr     <= 0;
+                    load_n   <= 1;  // carga N_in en reg_n
+                    init     <= 1;  // limpia Rem, Rad.
                     load_out <= 0;
                     ready    <= 0;
                     state    <= S_WAIT;
                 end
 
                 S_WAIT: begin
+                    // init=0: C vale N_PAIRS-1, done=0 garantizado
                     load_n   <= 0;
                     init     <= 0;
-                    en_calc  <= 0;
-                    decr     <= 0;
                     load_out <= 0;
                     ready    <= 0;
                     state    <= S_CALC;
@@ -80,8 +74,6 @@ module fsm_sqrt (
                 S_CALC: begin
                     load_n   <= 0;
                     init     <= 0;
-                    en_calc  <= 1;
-                    decr     <= 1;
                     load_out <= 0;
                     ready    <= 0;
                     if (done)
@@ -91,23 +83,17 @@ module fsm_sqrt (
                 end
 
                 S_DONE: begin
-                    // en_calc=0 este ciclo 
-                    // load_out=1
                     load_n   <= 0;
                     init     <= 0;
-                    en_calc  <= 0;
-                    decr     <= 0;
-                    load_out <= 1;
+                    load_out <= 1;  // reg_out captura Rad
                     ready    <= 0;
                     state    <= S_OUT;
                 end
 
                 S_OUT: begin
-                    // raiz estable 
+                    // raiz estable en reg_out
                     load_n   <= 0;
                     init     <= 0;
-                    en_calc  <= 0;
-                    decr     <= 0;
                     load_out <= 0;
                     ready    <= 1;
                     state    <= S_IDLE;

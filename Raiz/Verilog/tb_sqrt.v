@@ -1,13 +1,4 @@
 `timescale 1ns/1ps
-`include "top_sqrt.v"
-`include "fsm_sqrt.v"
-`include "cont.v"
-`include "reg_n.v"
-`include "reg_rem.v"
-`include "reg_rad.v"
-`include "reg_out.v"
-`include "sub.v"
-`include "trial.v"
 
 module tb_sqrt;
 
@@ -46,51 +37,51 @@ initial begin
     #20;
     rst = 0;
 
-//--- Caso 1
+// ── Caso 1
     #10;
     N_in  = 16'd79;
     start = 1;
     #10;
     start = 0;
 
+    // ready=1 la raiz está estable en reg_out
     wait(ready);
-    #1;
-
-    $display("ENtrada(%0d)", N_in);
-    $display("Raiz: %0d" , raiz);
-
-    #10; rst = 1;
-    #10; rst = 0;
-
-// --- Caso 2 
-    #10;
-    N_in  = 16'd124;
-    start = 1;
-    #10;
-    start = 0;
-
-    wait(ready);
-    #1;
-
+    @(posedge clk); #1; // margen post-flanco
 
     $display("Entrada(%0d)", N_in);
     $display("Raiz: %0d" , raiz);
 
-
+    // reset entre casos
     #10; rst = 1;
     #10; rst = 0;
 
-// --- Caso 3 
+// ── Caso 2 
     #10;
-    N_in  = 16'd615;
+    N_in  = 16'd100;
     start = 1;
     #10;
     start = 0;
 
     wait(ready);
-    #1;
+    @(posedge clk); #1;
 
-    $display("------------------------");
+    $display("Entrada(%0d)", N_in);
+    $display("Raiz: %0d" , raiz);
+
+    // reset entre casos
+    #10; rst = 1;
+    #10; rst = 0;
+
+// ── Caso 3 
+    #10;
+    N_in  = 16'd625;
+    start = 1;
+    #10;
+    start = 0;
+
+    wait(ready);
+    @(posedge clk); #1;
+
     $display("Entrada(%0d)", N_in);
     $display("Raiz: %0d" , raiz);
 

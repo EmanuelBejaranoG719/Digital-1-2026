@@ -1,10 +1,10 @@
 `timescale 1ns/1ps
-`include "top_div.v"
-`include "div_sh_reg.v"
-`include "div_comp.v"
-`include "Control_div.v"
-`include "acm_reg.v"
-`include "reg_c.v"
+// `include "top_div.v"
+// `include "div_sh_reg.v"
+// `include "div_comp.v"
+// `include "Control_div.v"
+// `include "acm_reg.v"
+// `include "reg_c.v"
 
 module tb_div;
 
