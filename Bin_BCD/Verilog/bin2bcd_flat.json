@@ -1,0 +1,2192 @@
+{
+  "creator": "Yosys 0.33 (git sha1 2584903a060)",
+  "modules": {
+    "top_bin2bcd": {
+      "attributes": {
+        "hdlname": "\\top_bin2bcd",
+        "dynports": "00000000000000000000000000000001",
+        "top": "00000000000000000000000000000001",
+        "src": "top_bin2bcd.v:3.1-91.10"
+      },
+      "parameter_default_values": {
+        "N_SHIFTS": "00000000000000000000000000010000",
+        "WIDTH_BCD": "00000000000000000000000000010100",
+        "WIDTH_BIN": "00000000000000000000000000010000"
+      },
+      "ports": {
+        "clk": {
+          "direction": "input",
+          "bits": [ 2 ]
+        },
+        "rst": {
+          "direction": "input",
+          "bits": [ 3 ]
+        },
+        "start": {
+          "direction": "input",
+          "bits": [ 4 ]
+        },
+        "Bin_in": {
+          "direction": "input",
+          "bits": [ 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ]
+        },
+        "BCD_out": {
+          "direction": "output",
+          "bits": [ 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40 ]
+        },
+        "ready": {
+          "direction": "output",
+          "bits": [ 41 ]
+        }
+      },
+      "cells": {
+        "$auto$opt_reduce.cc:128:opt_pmux$127": {
+          "hide_name": 1,
+          "type": "$reduce_or",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000101",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 42, 43, 44, 45, 46 ],
+            "Y": [ 47 ]
+          }
+        },
+        "$auto$opt_reduce.cc:128:opt_pmux$131": {
+          "hide_name": 1,
+          "type": "$reduce_or",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000101",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 43, 44, 45, 48, 46 ],
+            "Y": [ 49 ]
+          }
+        },
+        "$auto$opt_reduce.cc:128:opt_pmux$133": {
+          "hide_name": 1,
+          "type": "$reduce_or",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000101",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 42, 43, 45, 48, 46 ],
+            "Y": [ 50 ]
+          }
+        },
+        "$flatten\\u_add3.$add$add_fix.v:19$14": {
+          "hide_name": 1,
+          "type": "$add",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000100",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:19.49-19.65"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 51, 52, 53, 54 ],
+            "B": [ "1", "1" ],
+            "Y": [ 55, 56, 57, 58 ]
+          }
+        },
+        "$flatten\\u_add3.$add$add_fix.v:20$17": {
+          "hide_name": 1,
+          "type": "$add",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000100",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:20.51-20.68"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 59, 60, 61, 62 ],
+            "B": [ "1", "1" ],
+            "Y": [ 63, 64, 65, 66 ]
+          }
+        },
+        "$flatten\\u_add3.$add$add_fix.v:21$20": {
+          "hide_name": 1,
+          "type": "$add",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000100",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:21.49-21.65"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 67, 68, 69, 70 ],
+            "B": [ "1", "1" ],
+            "Y": [ 71, 72, 73, 74 ]
+          }
+        },
+        "$flatten\\u_add3.$add$add_fix.v:22$23": {
+          "hide_name": 1,
+          "type": "$add",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000100",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:22.53-22.71"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 75, 76, 77, 78 ],
+            "B": [ "1", "1" ],
+            "Y": [ 79, 80, 81, 82 ]
+          }
+        },
+        "$flatten\\u_add3.$add$add_fix.v:23$26": {
+          "hide_name": 1,
+          "type": "$add",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:23.51-23.68"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 83, 84, 85 ],
+            "B": [ "1", "1" ],
+            "Y": [ 86, 87, 88 ]
+          }
+        },
+        "$flatten\\u_add3.$ge$add_fix.v:19$13": {
+          "hide_name": 1,
+          "type": "$ge",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000100",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:19.30-19.44"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 51, 52, 53, 54 ],
+            "B": [ "1", "0", "1" ],
+            "Y": [ 89 ]
+          }
+        },
+        "$flatten\\u_add3.$ge$add_fix.v:20$16": {
+          "hide_name": 1,
+          "type": "$ge",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000100",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:20.31-20.46"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 59, 60, 61, 62 ],
+            "B": [ "1", "0", "1" ],
+            "Y": [ 90 ]
+          }
+        },
+        "$flatten\\u_add3.$ge$add_fix.v:21$19": {
+          "hide_name": 1,
+          "type": "$ge",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000100",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:21.30-21.44"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 67, 68, 69, 70 ],
+            "B": [ "1", "0", "1" ],
+            "Y": [ 91 ]
+          }
+        },
+        "$flatten\\u_add3.$ge$add_fix.v:22$22": {
+          "hide_name": 1,
+          "type": "$ge",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000100",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:22.32-22.48"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 75, 76, 77, 78 ],
+            "B": [ "1", "0", "1" ],
+            "Y": [ 92 ]
+          }
+        },
+        "$flatten\\u_add3.$ge$add_fix.v:23$25": {
+          "hide_name": 1,
+          "type": "$ge",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000100",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:23.31-23.46"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 83, 84, 85, 93 ],
+            "B": [ "1", "0", "1" ],
+            "Y": [ 94 ]
+          }
+        },
+        "$flatten\\u_add3.$ternary$add_fix.v:19$15": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:19.29-19.76"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 51, 52, 53, 54 ],
+            "B": [ 55, 56, 57, 58 ],
+            "S": [ 89 ],
+            "Y": [ 95, 96, 97, 98 ]
+          }
+        },
+        "$flatten\\u_add3.$ternary$add_fix.v:20$18": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:20.30-20.79"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 59, 60, 61, 62 ],
+            "B": [ 63, 64, 65, 66 ],
+            "S": [ 90 ],
+            "Y": [ 99, 100, 101, 102 ]
+          }
+        },
+        "$flatten\\u_add3.$ternary$add_fix.v:21$21": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:21.29-21.76"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 67, 68, 69, 70 ],
+            "B": [ 71, 72, 73, 74 ],
+            "S": [ 91 ],
+            "Y": [ 103, 104, 105, 106 ]
+          }
+        },
+        "$flatten\\u_add3.$ternary$add_fix.v:22$24": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:22.31-22.81"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 75, 76, 77, 78 ],
+            "B": [ 79, 80, 81, 82 ],
+            "S": [ 92 ],
+            "Y": [ 107, 108, 109, 110 ]
+          }
+        },
+        "$flatten\\u_add3.$ternary$add_fix.v:23$27": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:23.30-23.82"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 83, 84, 85 ],
+            "B": [ 86, 87, 88 ],
+            "S": [ 94 ],
+            "Y": [ 111, 112, 113 ]
+          }
+        },
+        "$flatten\\u_cont.$eq$cont_shift.v:24$8": {
+          "hide_name": 1,
+          "type": "$logic_not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000100",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:48.39-55.6|cont_shift.v:24.20-24.29"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 114, 115, 116, 117 ],
+            "Y": [ 118 ]
+          }
+        },
+        "$flatten\\u_cont.$logic_and$cont_shift.v:20$6": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:48.39-55.6|cont_shift.v:20.18-20.35"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 46 ],
+            "B": [ 119 ],
+            "Y": [ 120 ]
+          }
+        },
+        "$flatten\\u_cont.$ne$cont_shift.v:20$5": {
+          "hide_name": 1,
+          "type": "$reduce_bool",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000100",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:48.39-55.6|cont_shift.v:20.26-20.35"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 114, 115, 116, 117 ],
+            "Y": [ 119 ]
+          }
+        },
+        "$flatten\\u_cont.$procdff$123": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:48.39-55.6|cont_shift.v:15.5-22.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 121, 122, 123, 124 ],
+            "Q": [ 114, 115, 116, 117 ]
+          }
+        },
+        "$flatten\\u_cont.$procmux$89": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:48.39-55.6|cont_shift.v:20.14-21.33|cont_shift.v:20.18-20.35"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 114, 115, 116, 117 ],
+            "B": [ 125, 126, 127, 128 ],
+            "S": [ 120 ],
+            "Y": [ 129, 130, 131, 132 ]
+          }
+        },
+        "$flatten\\u_cont.$procmux$92": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "top_bin2bcd.v:48.39-55.6|cont_shift.v:18.14-21.33|cont_shift.v:18.18-18.22"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 129, 130, 131, 132 ],
+            "B": [ "1", "1", "1", "1" ],
+            "S": [ 133 ],
+            "Y": [ 134, 135, 136, 137 ]
+          }
+        },
+        "$flatten\\u_cont.$procmux$95": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "top_bin2bcd.v:48.39-55.6|cont_shift.v:16.9-21.33|cont_shift.v:16.13-16.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 134, 135, 136, 137 ],
+            "B": [ "0", "0", "0", "0" ],
+            "S": [ 3 ],
+            "Y": [ 121, 122, 123, 124 ]
+          }
+        },
+        "$flatten\\u_cont.$sub$cont_shift.v:21$7": {
+          "hide_name": 1,
+          "type": "$sub",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000100",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:48.39-55.6|cont_shift.v:21.21-21.32"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 114, 115, 116, 117 ],
+            "B": [ "1" ],
+            "Y": [ 125, 126, 127, 128 ]
+          }
+        },
+        "$flatten\\u_fsm.$eq$bin2bcd_fsm.v:23$9": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:23.23-23.38"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 138, 139, 140 ],
+            "B": [ "1", "1" ],
+            "Y": [ 46 ]
+          }
+        },
+        "$flatten\\u_fsm.$procdff$118": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:34.5-106.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 141 ],
+            "Q": [ 133 ]
+          }
+        },
+        "$flatten\\u_fsm.$procdff$119": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:34.5-106.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 142 ],
+            "Q": [ 41 ]
+          }
+        },
+        "$flatten\\u_fsm.$procdff$120": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:34.5-106.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 143 ],
+            "Q": [ 144 ]
+          }
+        },
+        "$flatten\\u_fsm.$procdff$121": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:34.5-106.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 145 ],
+            "Q": [ 146 ]
+          }
+        },
+        "$flatten\\u_fsm.$procdff$122": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:34.5-106.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 147, 148, 149 ],
+            "Q": [ 138, 139, 140 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$30": {
+          "hide_name": 1,
+          "type": "$pmux",
+          "parameters": {
+            "S_WIDTH": "00000000000000000000000000000101",
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:43.13-104.20|bin2bcd_fsm.v:0.0-0.0"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0", "0", "0" ],
+            "B": [ "1", "0", "1", 150, 151, 152, "1", "1", "0", "0", "1", "0", 153, "0", "0" ],
+            "S": [ 48, 46, 45, 44, 43 ],
+            "Y": [ 154, 155, 156 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$31_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:43.13-104.20|bin2bcd_fsm.v:0.0-0.0"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 138, 139, 140 ],
+            "B": [ "0", "0", "1" ],
+            "Y": [ 48 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$33": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:79.21-82.41|bin2bcd_fsm.v:79.25-79.29"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "1", "1", "0" ],
+            "B": [ "0", "0", "1" ],
+            "S": [ 118 ],
+            "Y": [ 150, 151, 152 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$36_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:43.13-104.20|bin2bcd_fsm.v:0.0-0.0"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 138, 139, 140 ],
+            "B": [ "0", "1" ],
+            "Y": [ 45 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$37_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:43.13-104.20|bin2bcd_fsm.v:0.0-0.0"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 138, 139, 140 ],
+            "B": [ "1" ],
+            "Y": [ 44 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$39": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:50.21-53.41|bin2bcd_fsm.v:50.25-50.30"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0" ],
+            "B": [ "1" ],
+            "S": [ 4 ],
+            "Y": [ 153 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$41_CMP0": {
+          "hide_name": 1,
+          "type": "$logic_not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:43.13-104.20|bin2bcd_fsm.v:0.0-0.0"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 138, 139, 140 ],
+            "Y": [ 43 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$43": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:35.9-105.12|bin2bcd_fsm.v:35.13-35.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 154, 155, 156 ],
+            "B": [ "0", "0", "0" ],
+            "S": [ 3 ],
+            "Y": [ 147, 148, 149 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$46": {
+          "hide_name": 1,
+          "type": "$pmux",
+          "parameters": {
+            "S_WIDTH": "00000000000000000000000000000010",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:43.13-104.20|bin2bcd_fsm.v:0.0-0.0"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 146 ],
+            "B": [ "0", "1" ],
+            "S": [ 47, 48 ],
+            "Y": [ 157 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$47_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:43.13-104.20|bin2bcd_fsm.v:0.0-0.0"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 138, 139, 140 ],
+            "B": [ "1", "0", "1" ],
+            "Y": [ 42 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$54": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:35.9-105.12|bin2bcd_fsm.v:35.13-35.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 157 ],
+            "B": [ "0" ],
+            "S": [ 3 ],
+            "Y": [ 145 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$57": {
+          "hide_name": 1,
+          "type": "$pmux",
+          "parameters": {
+            "S_WIDTH": "00000000000000000000000000000010",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:43.13-104.20|bin2bcd_fsm.v:0.0-0.0"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 144 ],
+            "B": [ "0", "1" ],
+            "S": [ 50, 44 ],
+            "Y": [ 158 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$65": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:35.9-105.12|bin2bcd_fsm.v:35.13-35.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 158 ],
+            "B": [ "0" ],
+            "S": [ 3 ],
+            "Y": [ 143 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$68": {
+          "hide_name": 1,
+          "type": "$pmux",
+          "parameters": {
+            "S_WIDTH": "00000000000000000000000000000010",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:43.13-104.20|bin2bcd_fsm.v:0.0-0.0"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 41 ],
+            "B": [ "1", "0" ],
+            "S": [ 42, 49 ],
+            "Y": [ 159 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$76": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:35.9-105.12|bin2bcd_fsm.v:35.13-35.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 159 ],
+            "B": [ "0" ],
+            "S": [ 3 ],
+            "Y": [ 142 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$79": {
+          "hide_name": 1,
+          "type": "$pmux",
+          "parameters": {
+            "S_WIDTH": "00000000000000000000000000000010",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:43.13-104.20|bin2bcd_fsm.v:0.0-0.0"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 133 ],
+            "B": [ "0", "1" ],
+            "S": [ 50, 44 ],
+            "Y": [ 160 ]
+          }
+        },
+        "$flatten\\u_fsm.$procmux$87": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:35.9-105.12|bin2bcd_fsm.v:35.13-35.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 160 ],
+            "B": [ "0" ],
+            "S": [ 3 ],
+            "Y": [ 141 ]
+          }
+        },
+        "$flatten\\u_reg_bcd.$procdff$125": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000010100"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:68.38-75.6|reg_bcd.v:12.5-19.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180 ],
+            "Q": [ 51, 52, 53, 54, 59, 60, 61, 62, 67, 68, 69, 70, 75, 76, 77, 78, 83, 84, 85, 93 ]
+          }
+        },
+        "$flatten\\u_reg_bcd.$procmux$105": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000010100"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:68.38-75.6|reg_bcd.v:17.14-18.29|reg_bcd.v:17.18-17.25"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 51, 52, 53, 54, 59, 60, 61, 62, 67, 68, 69, 70, 75, 76, 77, 78, 83, 84, 85, 93 ],
+            "B": [ 181, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113 ],
+            "S": [ 46 ],
+            "Y": [ 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201 ]
+          }
+        },
+        "$flatten\\u_reg_bcd.$procmux$108": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000010100"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "top_bin2bcd.v:68.38-75.6|reg_bcd.v:15.14-18.29|reg_bcd.v:15.18-15.22"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201 ],
+            "B": [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "S": [ 133 ],
+            "Y": [ 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221 ]
+          }
+        },
+        "$flatten\\u_reg_bcd.$procmux$111": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000010100"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "top_bin2bcd.v:68.38-75.6|reg_bcd.v:13.9-18.29|reg_bcd.v:13.13-13.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221 ],
+            "B": [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "S": [ 3 ],
+            "Y": [ 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180 ]
+          }
+        },
+        "$flatten\\u_reg_bin.$procdff$124": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000010000"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:59.38-66.6|reg_bin.v:12.5-19.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237 ],
+            "Q": [ 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 181 ]
+          }
+        },
+        "$flatten\\u_reg_bin.$procmux$100": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000010000"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "top_bin2bcd.v:59.38-66.6|reg_bin.v:15.14-18.47|reg_bin.v:15.18-15.26"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268 ],
+            "B": [ 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ],
+            "S": [ 144 ],
+            "Y": [ 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284 ]
+          }
+        },
+        "$flatten\\u_reg_bin.$procmux$103": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000010000"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "top_bin2bcd.v:59.38-66.6|reg_bin.v:13.9-18.47|reg_bin.v:13.13-13.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284 ],
+            "B": [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "S": [ 3 ],
+            "Y": [ 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237 ]
+          }
+        },
+        "$flatten\\u_reg_bin.$procmux$97": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000010000"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:59.38-66.6|reg_bin.v:17.14-18.47|reg_bin.v:17.18-17.25"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 181 ],
+            "B": [ "0", 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252 ],
+            "S": [ 46 ],
+            "Y": [ 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268 ]
+          }
+        },
+        "$flatten\\u_reg_out.$procdff$126": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000010100"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:79.42-85.6|reg_bcd_out.v:11.5-16.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304 ],
+            "Q": [ 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40 ]
+          }
+        },
+        "$flatten\\u_reg_out.$procmux$113": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000010100"
+          },
+          "attributes": {
+            "src": "top_bin2bcd.v:79.42-85.6|reg_bcd_out.v:14.14-15.27|reg_bcd_out.v:14.18-14.26"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40 ],
+            "B": [ 51, 52, 53, 54, 59, 60, 61, 62, 67, 68, 69, 70, 75, 76, 77, 78, 83, 84, 85, 93 ],
+            "S": [ 146 ],
+            "Y": [ 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324 ]
+          }
+        },
+        "$flatten\\u_reg_out.$procmux$116": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000010100"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "top_bin2bcd.v:79.42-85.6|reg_bcd_out.v:12.9-15.27|reg_bcd_out.v:12.13-12.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324 ],
+            "B": [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "S": [ 3 ],
+            "Y": [ 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304 ]
+          }
+        }
+      },
+      "netnames": {
+        "$auto$opt_reduce.cc:134:opt_pmux$128": {
+          "hide_name": 1,
+          "bits": [ 47 ],
+          "attributes": {
+          }
+        },
+        "$auto$opt_reduce.cc:134:opt_pmux$130": {
+          "hide_name": 1,
+          "bits": [ 50 ],
+          "attributes": {
+          }
+        },
+        "$auto$opt_reduce.cc:134:opt_pmux$132": {
+          "hide_name": 1,
+          "bits": [ 49 ],
+          "attributes": {
+          }
+        },
+        "$auto$wreduce.cc:461:run$135": {
+          "hide_name": 1,
+          "bits": [ 86, 87, 88, 325 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:23.51-23.68",
+            "unused_bits": "3"
+          }
+        },
+        "$auto$wreduce.cc:461:run$136": {
+          "hide_name": 1,
+          "bits": [ 153, "0", "0" ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_add3.$add$add_fix.v:19$14_Y": {
+          "hide_name": 1,
+          "bits": [ 55, 56, 57, 58 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:19.49-19.65"
+          }
+        },
+        "$flatten\\u_add3.$add$add_fix.v:20$17_Y": {
+          "hide_name": 1,
+          "bits": [ 63, 64, 65, 66 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:20.51-20.68"
+          }
+        },
+        "$flatten\\u_add3.$add$add_fix.v:21$20_Y": {
+          "hide_name": 1,
+          "bits": [ 71, 72, 73, 74 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:21.49-21.65"
+          }
+        },
+        "$flatten\\u_add3.$add$add_fix.v:22$23_Y": {
+          "hide_name": 1,
+          "bits": [ 79, 80, 81, 82 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:22.53-22.71"
+          }
+        },
+        "$flatten\\u_add3.$ge$add_fix.v:19$13_Y": {
+          "hide_name": 1,
+          "bits": [ 89 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:19.30-19.44"
+          }
+        },
+        "$flatten\\u_add3.$ge$add_fix.v:20$16_Y": {
+          "hide_name": 1,
+          "bits": [ 90 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:20.31-20.46"
+          }
+        },
+        "$flatten\\u_add3.$ge$add_fix.v:21$19_Y": {
+          "hide_name": 1,
+          "bits": [ 91 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:21.30-21.44"
+          }
+        },
+        "$flatten\\u_add3.$ge$add_fix.v:22$22_Y": {
+          "hide_name": 1,
+          "bits": [ 92 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:22.32-22.48"
+          }
+        },
+        "$flatten\\u_add3.$ge$add_fix.v:23$25_Y": {
+          "hide_name": 1,
+          "bits": [ 94 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:23.31-23.46"
+          }
+        },
+        "$flatten\\u_cont.$0\\Cont[3:0]": {
+          "hide_name": 1,
+          "bits": [ 121, 122, 123, 124 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:48.39-55.6|cont_shift.v:15.5-22.8"
+          }
+        },
+        "$flatten\\u_cont.$logic_and$cont_shift.v:20$6_Y": {
+          "hide_name": 1,
+          "bits": [ 120 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:48.39-55.6|cont_shift.v:20.18-20.35"
+          }
+        },
+        "$flatten\\u_cont.$ne$cont_shift.v:20$5_Y": {
+          "hide_name": 1,
+          "bits": [ 119 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:48.39-55.6|cont_shift.v:20.26-20.35"
+          }
+        },
+        "$flatten\\u_cont.$procmux$89_Y": {
+          "hide_name": 1,
+          "bits": [ 129, 130, 131, 132 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_cont.$procmux$92_Y": {
+          "hide_name": 1,
+          "bits": [ 134, 135, 136, 137 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_cont.$sub$cont_shift.v:21$7_Y": {
+          "hide_name": 1,
+          "bits": [ 125, 126, 127, 128 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:48.39-55.6|cont_shift.v:21.21-21.32"
+          }
+        },
+        "$flatten\\u_fsm.$0\\init[0:0]": {
+          "hide_name": 1,
+          "bits": [ 141 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:34.5-106.8"
+          }
+        },
+        "$flatten\\u_fsm.$0\\load_bin[0:0]": {
+          "hide_name": 1,
+          "bits": [ 143 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:34.5-106.8"
+          }
+        },
+        "$flatten\\u_fsm.$0\\load_out[0:0]": {
+          "hide_name": 1,
+          "bits": [ 145 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:34.5-106.8"
+          }
+        },
+        "$flatten\\u_fsm.$0\\ready[0:0]": {
+          "hide_name": 1,
+          "bits": [ 142 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:34.5-106.8"
+          }
+        },
+        "$flatten\\u_fsm.$0\\state[2:0]": {
+          "hide_name": 1,
+          "bits": [ 147, 148, 149 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:34.5-106.8"
+          }
+        },
+        "$flatten\\u_fsm.$procmux$30_Y": {
+          "hide_name": 1,
+          "bits": [ 154, 155, 156 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$31_CMP": {
+          "hide_name": 1,
+          "bits": [ 48 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$33_Y": {
+          "hide_name": 1,
+          "bits": [ 150, 151, 152 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$36_CMP": {
+          "hide_name": 1,
+          "bits": [ 45 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$37_CMP": {
+          "hide_name": 1,
+          "bits": [ 44 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$41_CMP": {
+          "hide_name": 1,
+          "bits": [ 43 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$46_Y": {
+          "hide_name": 1,
+          "bits": [ 157 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$47_CMP": {
+          "hide_name": 1,
+          "bits": [ 42 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$57_Y": {
+          "hide_name": 1,
+          "bits": [ 158 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$68_Y": {
+          "hide_name": 1,
+          "bits": [ 159 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_fsm.$procmux$79_Y": {
+          "hide_name": 1,
+          "bits": [ 160 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_reg_bcd.$0\\Bcd[19:0]": {
+          "hide_name": 1,
+          "bits": [ 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:68.38-75.6|reg_bcd.v:12.5-19.8"
+          }
+        },
+        "$flatten\\u_reg_bcd.$procmux$105_Y": {
+          "hide_name": 1,
+          "bits": [ 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_reg_bcd.$procmux$108_Y": {
+          "hide_name": 1,
+          "bits": [ 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_reg_bin.$0\\Bin[15:0]": {
+          "hide_name": 1,
+          "bits": [ 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:59.38-66.6|reg_bin.v:12.5-19.8"
+          }
+        },
+        "$flatten\\u_reg_bin.$procmux$100_Y": {
+          "hide_name": 1,
+          "bits": [ 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_reg_bin.$procmux$97_Y": {
+          "hide_name": 1,
+          "bits": [ 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_reg_out.$0\\Result[19:0]": {
+          "hide_name": 1,
+          "bits": [ 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:79.42-85.6|reg_bcd_out.v:11.5-16.8"
+          }
+        },
+        "$flatten\\u_reg_out.$procmux$113_Y": {
+          "hide_name": 1,
+          "bits": [ 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324 ],
+          "attributes": {
+          }
+        },
+        "BCD_out": {
+          "hide_name": 0,
+          "bits": [ 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:12.35-12.42"
+          }
+        },
+        "Bcd": {
+          "hide_name": 0,
+          "bits": [ 51, 52, 53, 54, 59, 60, 61, 62, 67, 68, 69, 70, 75, 76, 77, 78, 83, 84, 85, 93 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:21.35-21.38"
+          }
+        },
+        "Bcd_fix": {
+          "hide_name": 0,
+          "bits": [ 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113 ],
+          "attributes": {
+          }
+        },
+        "Bcd_sh": {
+          "hide_name": 0,
+          "bits": [ 181, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:31.26-31.32"
+          }
+        },
+        "Bin": {
+          "hide_name": 0,
+          "bits": [ 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 181 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:20.35-20.38"
+          }
+        },
+        "Bin_in": {
+          "hide_name": 0,
+          "bits": [ 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:11.35-11.41"
+          }
+        },
+        "Cont": {
+          "hide_name": 0,
+          "bits": [ 114, 115, 116, 117 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:22.35-22.39"
+          }
+        },
+        "Result": {
+          "hide_name": 0,
+          "bits": [ 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:78.26-78.32"
+          }
+        },
+        "clk": {
+          "hide_name": 0,
+          "bits": [ 2 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:8.35-8.38"
+          }
+        },
+        "decr": {
+          "hide_name": 0,
+          "bits": [ 46 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:17.35-17.39"
+          }
+        },
+        "done_cnt": {
+          "hide_name": 0,
+          "bits": [ 118 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:23.35-23.43"
+          }
+        },
+        "en_calc": {
+          "hide_name": 0,
+          "bits": [ 46 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:17.26-17.33"
+          }
+        },
+        "init": {
+          "hide_name": 0,
+          "bits": [ 133 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:17.20-17.24"
+          }
+        },
+        "load_bin": {
+          "hide_name": 0,
+          "bits": [ 144 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:17.10-17.18"
+          }
+        },
+        "load_out": {
+          "hide_name": 0,
+          "bits": [ 146 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:17.41-17.49"
+          }
+        },
+        "ready": {
+          "hide_name": 0,
+          "bits": [ 41 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:13.35-13.40"
+          }
+        },
+        "rst": {
+          "hide_name": 0,
+          "bits": [ 3 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:9.35-9.38"
+          }
+        },
+        "start": {
+          "hide_name": 0,
+          "bits": [ 4 ],
+          "attributes": {
+            "src": "top_bin2bcd.v:10.35-10.40"
+          }
+        },
+        "u_add3.Bcd_fix": {
+          "hide_name": 0,
+          "bits": [ 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, "x" ],
+          "attributes": {
+            "hdlname": "u_add3 Bcd_fix",
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:11.33-11.40"
+          }
+        },
+        "u_add3.Bcd_in": {
+          "hide_name": 0,
+          "bits": [ 51, 52, 53, 54, 59, 60, 61, 62, 67, 68, 69, 70, 75, 76, 77, 78, 83, 84, 85, 93 ],
+          "attributes": {
+            "hdlname": "u_add3 Bcd_in",
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:10.33-10.39"
+          }
+        },
+        "u_add3.cent_fix": {
+          "hide_name": 0,
+          "bits": [ 103, 104, 105, 106 ],
+          "attributes": {
+            "hdlname": "u_add3 cent_fix",
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:21.16-21.24"
+          }
+        },
+        "u_add3.cent_in": {
+          "hide_name": 0,
+          "bits": [ 67, 68, 69, 70 ],
+          "attributes": {
+            "hdlname": "u_add3 cent_in",
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:15.16-15.23"
+          }
+        },
+        "u_add3.dec_mil_fix": {
+          "hide_name": 0,
+          "bits": [ 111, 112, 113, "x" ],
+          "attributes": {
+            "hdlname": "u_add3 dec_mil_fix",
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:23.16-23.27"
+          }
+        },
+        "u_add3.dec_mil_in": {
+          "hide_name": 0,
+          "bits": [ 83, 84, 85, 93 ],
+          "attributes": {
+            "hdlname": "u_add3 dec_mil_in",
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:17.16-17.26"
+          }
+        },
+        "u_add3.decs_fix": {
+          "hide_name": 0,
+          "bits": [ 99, 100, 101, 102 ],
+          "attributes": {
+            "hdlname": "u_add3 decs_fix",
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:20.16-20.24"
+          }
+        },
+        "u_add3.decs_in": {
+          "hide_name": 0,
+          "bits": [ 59, 60, 61, 62 ],
+          "attributes": {
+            "hdlname": "u_add3 decs_in",
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:14.16-14.23"
+          }
+        },
+        "u_add3.mil_fix": {
+          "hide_name": 0,
+          "bits": [ 107, 108, 109, 110 ],
+          "attributes": {
+            "hdlname": "u_add3 mil_fix",
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:22.16-22.23"
+          }
+        },
+        "u_add3.mil_in": {
+          "hide_name": 0,
+          "bits": [ 75, 76, 77, 78 ],
+          "attributes": {
+            "hdlname": "u_add3 mil_in",
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:16.16-16.22"
+          }
+        },
+        "u_add3.unit_fix": {
+          "hide_name": 0,
+          "bits": [ 95, 96, 97, 98 ],
+          "attributes": {
+            "hdlname": "u_add3 unit_fix",
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:19.16-19.24"
+          }
+        },
+        "u_add3.unit_in": {
+          "hide_name": 0,
+          "bits": [ 51, 52, 53, 54 ],
+          "attributes": {
+            "hdlname": "u_add3 unit_in",
+            "src": "top_bin2bcd.v:26.38-29.6|add_fix.v:13.16-13.23"
+          }
+        },
+        "u_cont.Cont": {
+          "hide_name": 0,
+          "bits": [ 114, 115, 116, 117 ],
+          "attributes": {
+            "hdlname": "u_cont Cont",
+            "src": "top_bin2bcd.v:48.39-55.6|cont_shift.v:9.42-9.46"
+          }
+        },
+        "u_cont.clk": {
+          "hide_name": 0,
+          "bits": [ 2 ],
+          "attributes": {
+            "hdlname": "u_cont clk",
+            "src": "top_bin2bcd.v:48.39-55.6|cont_shift.v:5.42-5.45"
+          }
+        },
+        "u_cont.decr": {
+          "hide_name": 0,
+          "bits": [ 46 ],
+          "attributes": {
+            "hdlname": "u_cont decr",
+            "src": "top_bin2bcd.v:48.39-55.6|cont_shift.v:8.42-8.46"
+          }
+        },
+        "u_cont.done": {
+          "hide_name": 0,
+          "bits": [ 118 ],
+          "attributes": {
+            "hdlname": "u_cont done",
+            "src": "top_bin2bcd.v:48.39-55.6|cont_shift.v:10.42-10.46"
+          }
+        },
+        "u_cont.init": {
+          "hide_name": 0,
+          "bits": [ 133 ],
+          "attributes": {
+            "hdlname": "u_cont init",
+            "src": "top_bin2bcd.v:48.39-55.6|cont_shift.v:7.42-7.46"
+          }
+        },
+        "u_cont.rst": {
+          "hide_name": 0,
+          "bits": [ 3 ],
+          "attributes": {
+            "hdlname": "u_cont rst",
+            "src": "top_bin2bcd.v:48.39-55.6|cont_shift.v:6.42-6.45"
+          }
+        },
+        "u_fsm.clk": {
+          "hide_name": 0,
+          "bits": [ 2 ],
+          "attributes": {
+            "hdlname": "u_fsm clk",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:2.17-2.20"
+          }
+        },
+        "u_fsm.decr": {
+          "hide_name": 0,
+          "bits": [ 46 ],
+          "attributes": {
+            "hdlname": "u_fsm decr",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:9.17-9.21"
+          }
+        },
+        "u_fsm.done": {
+          "hide_name": 0,
+          "bits": [ 118 ],
+          "attributes": {
+            "hdlname": "u_fsm done",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:5.17-5.21"
+          }
+        },
+        "u_fsm.en_calc": {
+          "hide_name": 0,
+          "bits": [ 46 ],
+          "attributes": {
+            "hdlname": "u_fsm en_calc",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:8.17-8.24"
+          }
+        },
+        "u_fsm.init": {
+          "hide_name": 0,
+          "bits": [ 133 ],
+          "attributes": {
+            "hdlname": "u_fsm init",
+            "init": "0",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:7.17-7.21"
+          }
+        },
+        "u_fsm.load_bin": {
+          "hide_name": 0,
+          "bits": [ 144 ],
+          "attributes": {
+            "hdlname": "u_fsm load_bin",
+            "init": "0",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:6.17-6.25"
+          }
+        },
+        "u_fsm.load_out": {
+          "hide_name": 0,
+          "bits": [ 146 ],
+          "attributes": {
+            "hdlname": "u_fsm load_out",
+            "init": "0",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:10.17-10.25"
+          }
+        },
+        "u_fsm.ready": {
+          "hide_name": 0,
+          "bits": [ 41 ],
+          "attributes": {
+            "hdlname": "u_fsm ready",
+            "init": "0",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:11.17-11.22"
+          }
+        },
+        "u_fsm.rst": {
+          "hide_name": 0,
+          "bits": [ 3 ],
+          "attributes": {
+            "hdlname": "u_fsm rst",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:3.17-3.20"
+          }
+        },
+        "u_fsm.start": {
+          "hide_name": 0,
+          "bits": [ 4 ],
+          "attributes": {
+            "hdlname": "u_fsm start",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:4.17-4.22"
+          }
+        },
+        "u_fsm.state": {
+          "hide_name": 0,
+          "bits": [ 138, 139, 140 ],
+          "attributes": {
+            "hdlname": "u_fsm state",
+            "init": "000",
+            "src": "top_bin2bcd.v:34.17-45.6|bin2bcd_fsm.v:21.15-21.20"
+          }
+        },
+        "u_reg_bcd.Bcd": {
+          "hide_name": 0,
+          "bits": [ 51, 52, 53, 54, 59, 60, 61, 62, 67, 68, 69, 70, 75, 76, 77, 78, 83, 84, 85, 93 ],
+          "attributes": {
+            "hdlname": "u_reg_bcd Bcd",
+            "src": "top_bin2bcd.v:68.38-75.6|reg_bcd.v:10.35-10.38"
+          }
+        },
+        "u_reg_bcd.Bcd_next": {
+          "hide_name": 0,
+          "bits": [ 181, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113 ],
+          "attributes": {
+            "hdlname": "u_reg_bcd Bcd_next",
+            "src": "top_bin2bcd.v:68.38-75.6|reg_bcd.v:9.35-9.43"
+          }
+        },
+        "u_reg_bcd.clk": {
+          "hide_name": 0,
+          "bits": [ 2 ],
+          "attributes": {
+            "hdlname": "u_reg_bcd clk",
+            "src": "top_bin2bcd.v:68.38-75.6|reg_bcd.v:5.35-5.38"
+          }
+        },
+        "u_reg_bcd.en_calc": {
+          "hide_name": 0,
+          "bits": [ 46 ],
+          "attributes": {
+            "hdlname": "u_reg_bcd en_calc",
+            "src": "top_bin2bcd.v:68.38-75.6|reg_bcd.v:8.35-8.42"
+          }
+        },
+        "u_reg_bcd.init": {
+          "hide_name": 0,
+          "bits": [ 133 ],
+          "attributes": {
+            "hdlname": "u_reg_bcd init",
+            "src": "top_bin2bcd.v:68.38-75.6|reg_bcd.v:7.35-7.39"
+          }
+        },
+        "u_reg_bcd.rst": {
+          "hide_name": 0,
+          "bits": [ 3 ],
+          "attributes": {
+            "hdlname": "u_reg_bcd rst",
+            "src": "top_bin2bcd.v:68.38-75.6|reg_bcd.v:6.35-6.38"
+          }
+        },
+        "u_reg_bin.Bin": {
+          "hide_name": 0,
+          "bits": [ 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 181 ],
+          "attributes": {
+            "hdlname": "u_reg_bin Bin",
+            "src": "top_bin2bcd.v:59.38-66.6|reg_bin.v:10.35-10.38"
+          }
+        },
+        "u_reg_bin.Bin_in": {
+          "hide_name": 0,
+          "bits": [ 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ],
+          "attributes": {
+            "hdlname": "u_reg_bin Bin_in",
+            "src": "top_bin2bcd.v:59.38-66.6|reg_bin.v:9.35-9.41"
+          }
+        },
+        "u_reg_bin.clk": {
+          "hide_name": 0,
+          "bits": [ 2 ],
+          "attributes": {
+            "hdlname": "u_reg_bin clk",
+            "src": "top_bin2bcd.v:59.38-66.6|reg_bin.v:5.35-5.38"
+          }
+        },
+        "u_reg_bin.en_calc": {
+          "hide_name": 0,
+          "bits": [ 46 ],
+          "attributes": {
+            "hdlname": "u_reg_bin en_calc",
+            "src": "top_bin2bcd.v:59.38-66.6|reg_bin.v:8.35-8.42"
+          }
+        },
+        "u_reg_bin.load_bin": {
+          "hide_name": 0,
+          "bits": [ 144 ],
+          "attributes": {
+            "hdlname": "u_reg_bin load_bin",
+            "src": "top_bin2bcd.v:59.38-66.6|reg_bin.v:7.35-7.43"
+          }
+        },
+        "u_reg_bin.rst": {
+          "hide_name": 0,
+          "bits": [ 3 ],
+          "attributes": {
+            "hdlname": "u_reg_bin rst",
+            "src": "top_bin2bcd.v:59.38-66.6|reg_bin.v:6.35-6.38"
+          }
+        },
+        "u_reg_out.Bcd": {
+          "hide_name": 0,
+          "bits": [ 51, 52, 53, 54, 59, 60, 61, 62, 67, 68, 69, 70, 75, 76, 77, 78, 83, 84, 85, 93 ],
+          "attributes": {
+            "hdlname": "u_reg_out Bcd",
+            "src": "top_bin2bcd.v:79.42-85.6|reg_bcd_out.v:8.35-8.38"
+          }
+        },
+        "u_reg_out.Result": {
+          "hide_name": 0,
+          "bits": [ 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40 ],
+          "attributes": {
+            "hdlname": "u_reg_out Result",
+            "src": "top_bin2bcd.v:79.42-85.6|reg_bcd_out.v:9.35-9.41"
+          }
+        },
+        "u_reg_out.clk": {
+          "hide_name": 0,
+          "bits": [ 2 ],
+          "attributes": {
+            "hdlname": "u_reg_out clk",
+            "src": "top_bin2bcd.v:79.42-85.6|reg_bcd_out.v:5.35-5.38"
+          }
+        },
+        "u_reg_out.load_out": {
+          "hide_name": 0,
+          "bits": [ 146 ],
+          "attributes": {
+            "hdlname": "u_reg_out load_out",
+            "src": "top_bin2bcd.v:79.42-85.6|reg_bcd_out.v:7.35-7.43"
+          }
+        },
+        "u_reg_out.rst": {
+          "hide_name": 0,
+          "bits": [ 3 ],
+          "attributes": {
+            "hdlname": "u_reg_out rst",
+            "src": "top_bin2bcd.v:79.42-85.6|reg_bcd_out.v:6.35-6.38"
+          }
+        }
+      }
+    }
+  }
+}

@@ -31,7 +31,7 @@ sim_per:
 svg: $(OBJS)
 	yosys -p "prep -top ${TOP}; write_json ${TARGET}.json" ${OBJS}
 	netlistsvg ${TARGET}.json -o ${TARGET}.svg 
-	yosys -p "prep -top ${TARGET} -flatten; write_json ${TARGET}_flat.json" ${OBJS}
+	yosys -p "prep -top ${TOP} -flatten; write_json ${TARGET}_flat.json" ${OBJS}
 	netlistsvg ${TARGET}_flat.json -o ${TARGET}_flat.svg
 
 
